@@ -50,10 +50,10 @@ class JacobianAnalyzer:
         n_buses = len(bus_voltages)
         
         # Initialize Jacobian submatrices
-        J11 = np.zeros((n_buses, n_buses))  # ∂P/∂δ
-        J12 = np.zeros((n_buses, n_buses))  # ∂P/∂V
-        J21 = np.zeros((n_buses, n_buses))  # ∂Q/∂δ  
-        J22 = np.zeros((n_buses, n_buses))  # ∂Q/∂V
+        J11 = np.zeros((n_buses, n_buses))  # dP/ddelta
+        J12 = np.zeros((n_buses, n_buses))  # dP/dV
+        J21 = np.zeros((n_buses, n_buses))  # dQ/ddelta  
+        J22 = np.zeros((n_buses, n_buses))  # dQ/dV
         
         # Extract conductance and susceptance matrices
         G = np.real(y_matrix)
@@ -61,44 +61,44 @@ class JacobianAnalyzer:
         
         for i in range(n_buses):
             Vi = bus_voltages[i]
-            δi = bus_angles[i]
+            deltai = bus_angles[i]
             
             for j in range(n_buses):
                 Vj = bus_voltages[j]
-                δj = bus_angles[j]
+                deltaj = bus_angles[j]
                 
                 Gij = G[i, j]
                 Bij = B[i, j]
                 
-                δij = δi - δj
+                deltaij = deltai - deltaj
                 
                 if i == j:
                     # Diagonal elements
-                    # J11[i,i] = ∂Pi/∂δi
+                    # J11[i,i] = dPi/ddeltai
                     J11[i, i] = -q_injections[i] - Vi**2 * B[i, i]
                     
-                    # J12[i,i] = ∂Pi/∂Vi
+                    # J12[i,i] = dPi/dVi
                     J12[i, i] = p_injections[i] / Vi + Vi * G[i, i]
                     
-                    # J21[i,i] = ∂Qi/∂δi  
+                    # J21[i,i] = dQi/ddeltai  
                     J21[i, i] = p_injections[i] - Vi**2 * G[i, i]
                     
-                    # J22[i,i] = ∂Qi/∂Vi
+                    # J22[i,i] = dQi/dVi
                     J22[i, i] = q_injections[i] / Vi - Vi * B[i, i]
                     
                 else:
                     # Off-diagonal elements
-                    # J11[i,j] = ∂Pi/∂δj
-                    J11[i, j] = Vi * Vj * (Gij * np.sin(δij) - Bij * np.cos(δij))
+                    # J11[i,j] = dPi/ddeltaj
+                    J11[i, j] = Vi * Vj * (Gij * np.sin(deltaij) - Bij * np.cos(deltaij))
                     
-                    # J12[i,j] = ∂Pi/∂Vj
-                    J12[i, j] = Vi * (Gij * np.cos(δij) + Bij * np.sin(δij))
+                    # J12[i,j] = dPi/dVj
+                    J12[i, j] = Vi * (Gij * np.cos(deltaij) + Bij * np.sin(deltaij))
                     
-                    # J21[i,j] = ∂Qi/∂δj
-                    J21[i, j] = -Vi * Vj * (Gij * np.cos(δij) + Bij * np.sin(δij))
+                    # J21[i,j] = dQi/ddeltaj
+                    J21[i, j] = -Vi * Vj * (Gij * np.cos(deltaij) + Bij * np.sin(deltaij))
                     
-                    # J22[i,j] = ∂Qi/∂Vj  
-                    J22[i, j] = Vi * (Gij * np.sin(δij) - Bij * np.cos(δij))
+                    # J22[i,j] = dQi/dVj  
+                    J22[i, j] = Vi * (Gij * np.sin(deltaij) - Bij * np.cos(deltaij))
         
         # Assemble full Jacobian matrix
         jacobian = np.block([[J11, J12], [J21, J22]])
@@ -427,7 +427,7 @@ class JacobianAnalyzer:
         
         # Add annotations for critical eigenvalues
         min_real_idx = np.argmin(real_parts)
-        plt.annotate(f'λ_min = {eigenvalues[min_real_idx]:.3f}',
+        plt.annotate(f'lambda_min = {eigenvalues[min_real_idx]:.3f}',
                     xy=(real_parts[min_real_idx], imag_parts[min_real_idx]),
                     xytext=(10, 10), textcoords='offset points',
                     bbox=dict(boxstyle='round,pad=0.3', facecolor='yellow', alpha=0.7),
