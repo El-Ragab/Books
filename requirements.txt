@@ -1,0 +1,57 @@
+# Core ML and Data Science Libraries
+numpy>=1.21.0
+pandas>=1.3.0
+scikit-learn>=1.0.0
+tensorflow>=2.8.0
+torch>=1.11.0
+matplotlib>=3.5.0
+seaborn>=0.11.0
+plotly>=5.0.0
+
+# Power System Analysis
+pandapower>=2.10.0
+pypower>=5.1.0
+pypsa>=0.20.0
+powermodels>=0.1.0
+
+# Network and Communication
+networkx>=2.6.0
+scapy>=2.4.5
+cryptography>=3.4.0
+
+# Statistical Analysis
+scipy>=1.7.0
+statsmodels>=0.13.0
+pingouin>=0.5.0
+
+# Time Series Analysis
+tslearn>=0.5.0
+pyts>=0.12.0
+tsfresh>=0.19.0
+
+# Optimization
+cvxpy>=1.2.0
+pulp>=2.6.0
+
+# Visualization and Reporting
+dash>=2.0.0
+streamlit>=1.10.0
+jupyter>=1.0.0
+ipywidgets>=7.6.0
+
+# Data Handling
+h5py>=3.6.0
+openpyxl>=3.0.9
+xlsxwriter>=3.0.0
+
+# Testing and Quality
+pytest>=6.2.0
+pytest-cov>=3.0.0
+black>=22.0.0
+flake8>=4.0.0
+
+# IEC 61850 Protocol Simulation
+libiec61850-python>=1.5.0
+
+# Additional Security Libraries
+pycryptodome>=3.15.0

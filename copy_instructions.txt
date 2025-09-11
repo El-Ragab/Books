@@ -1,0 +1,88 @@
+CYBER-ATTACK DETECTION FRAMEWORK - COPY TO LOCAL LAPTOP
+===========================================================
+
+STEP 1: CREATE PROJECT FOLDER ON YOUR LAPTOP
+--------------------------------------------
+1. Open terminal/command prompt on your laptop
+2. Create project directory:
+   mkdir cyber-attack-detection-framework
+   cd cyber-attack-detection-framework
+
+STEP 2: CREATE DIRECTORY STRUCTURE
+----------------------------------
+Run these commands in your project folder:
+
+mkdir -p src/algorithms
+mkdir -p src/power_system
+mkdir -p src/attacks
+mkdir -p src/protection
+mkdir -p src/utils
+mkdir -p data/raw
+mkdir -p data/processed
+mkdir -p data/ieee_systems
+mkdir -p results/phase1
+mkdir -p results/phase2
+mkdir -p results/phase3
+mkdir -p tests
+mkdir -p notebooks
+
+STEP 3: COPY FILES ONE BY ONE
+-----------------------------
+Copy each file content exactly as shown in the workspace.
+Here's the complete list:
+
+ROOT DIRECTORY FILES (copy to main folder):
+1. requirements.txt
+2. README.md
+3. FRAMEWORK_SUMMARY.md
+4. COMPLETION_REPORT.md
+5. QUICK_START.md
+6. demo_run.py
+7. simple_test.py
+8. test_framework.py
+9. validate_structure.py
+
+SOURCE CODE FILES (copy to src/ folder):
+10. src/main.py
+11. src/data_generation.py
+
+ALGORITHM FILES (copy to src/algorithms/ folder):
+12. src/algorithms/__init__.py
+13. src/algorithms/ml_classifiers.py
+14. src/algorithms/unsupervised_learning.py
+15. src/algorithms/statistical_methods.py
+
+POWER SYSTEM FILES (copy to src/power_system/ folder):
+16. src/power_system/__init__.py
+17. src/power_system/jacobian_analysis.py
+18. src/power_system/y_matrix_analysis.py
+19. src/power_system/ieee_test_systems.py
+
+NOTEBOOK FILES (copy to notebooks/ folder):
+20. notebooks/demo_simulation.ipynb
+
+STEP 4: VERIFY SETUP
+-------------------
+After copying all files, run:
+
+python3 validate_structure.py
+# Should show: 100% validation success
+
+python3 simple_test.py  
+# Should show: All tests passed
+
+python3 demo_run.py
+# Should show: 98.9% accuracy demo
+
+STEP 5: OPTIONAL - INSTALL FULL DEPENDENCIES
+--------------------------------------------
+For complete functionality:
+pip install -r requirements.txt
+
+Then run full framework:
+python3 src/main.py
+
+TOTAL FILES TO COPY: 20 files
+EXPECTED RESULT: Complete working PhD research framework on your laptop!
+
+===========================================================
